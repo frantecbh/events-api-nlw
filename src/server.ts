@@ -1,6 +1,7 @@
 import fastify from 'fastify'
 import z from 'zod'
 import { prisma } from './database/prisma'
+import { generateSlug } from './utils/generate-slug'
 
 const app = fastify()
 
@@ -15,12 +16,24 @@ app.post('/events', async (request, reply) => {
     request.body,
   )
 
+  const slug = generateSlug(title)
+
+  const eventWithSameSlug = await prisma.event.findUnique({
+    where: {
+      slug,
+    },
+  })
+
+  if (eventWithSameSlug) {
+    throw new Error('Another event with same title already exists.')
+  }
+
   const event = await prisma.event.create({
     data: {
       title,
       details,
       maximunAttendees,
-      slug: new Date().toISOString(),
+      slug,
     },
   })
 
