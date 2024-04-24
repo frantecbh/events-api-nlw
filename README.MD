@@ -31,3 +31,7 @@ npm install prisma -D
 npx prisma init --datasource-provider SQLite
 
 npm i zod
+
+https://github.com/turkerdev/fastify-type-provider-zod
+
+fastify-type-provider-zod
