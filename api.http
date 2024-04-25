@@ -17,3 +17,7 @@ Content-Type: application/json
   "email": "franciscomenezesbh1@gmail.com"
 }
 
+###
+
+GET http://localhost:3333/events/382c214f-fcf3-4e72-a516-b4028b1d7d53
+Content-Type: application/json
