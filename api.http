@@ -2,7 +2,18 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": "Unite Summit 2024",
-  "details": "Um evento para apixonados pela programação",
-  "maximunAttendees": 100
+  "title": "Novo evento",
+  "details": "",
+  "maximunAttendees": 1
 }
+
+###
+
+POST http://localhost:3333/events/0c086e93-0f5c-49c3-bad4-cee016c7b110/attendees
+Content-Type: application/json
+
+{
+  "name": "Francisco Menezes",
+  "email": "franciscomenezesbh1@gmail.com"
+}
+
