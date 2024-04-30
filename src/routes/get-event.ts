@@ -12,21 +12,27 @@ export const getEvent = async (app: FastifyInstance) => {
           eventId: z.string().uuid(),
         }),
 
-        response: {
-          200: {
-            event: z.object({
-              id: z.string().uuid(),
-              title: z.string(),
-              slug: z.string(),
-              details: z.string().nullable(),
-              maximunAttendees: z.number().int().nullable(),
-              totalParticipantes: z.number().int(),
-            }),
-          },
-        },
+        // response: {
+        //   200: {
+        //     event: z.object({
+        //       id: z.string().uuid(),
+        //       title: z.string(),
+        //       slug: z.string(),
+        //       details: z.string().nullable(),
+        //       maximunAttendees: z.number().int().nullable(),
+        //       totalParticipantes: z.number().int(),
+        //     }),
+        //   },
+        // },
       },
     },
     async (request, replay) => {
+      // const serachEventSchema = z.object({
+      //   eventId: z.string().uuid(),
+      // })
+
+      // const { eventId } = serachEventSchema.parse(request.params)
+
       const { eventId } = request.params
 
       const event = await prisma.event.findUnique({
